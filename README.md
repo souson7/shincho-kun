@@ -1,5 +1,5 @@
 # shincho-kun（しんちょくん）
-業務進捗管理アプリ
+![ロゴ](https://github.com/user-attachments/assets/35335dd9-7b5e-4db5-a520-31606b2edc61)
 # 概要
 ## サイトテーマ
 ## テーマを選んだ理由
