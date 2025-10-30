@@ -1,0 +1,62 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        remember_me: ログインを記憶
+  devise:
+    confirmations:
+      confirmed: アカウントが確認されました。
+      send_instructions: アカウント確認用のメールを送信しました。
+      send_paranoid_instructions: メールアドレスが登録済みの場合、アカウント確認用のメールが送信されます。
+    failure:
+      already_authenticated: すでにログインしています。
+      inactive: アカウントが有効化されていません。
+      invalid: "%{authentication_keys}またはパスワードが違います。"
+      last_attempt: 残りのログイン試行回数が1回です。
+      locked: アカウントがロックされています。
+      not_found_in_database: "%{authentication_keys}が見つかりません。"
+      timeout: セッションがタイムアウトしました。もう一度ログインしてください。
+      unauthenticated: ログインまたはアカウント登録してください。
+      unconfirmed: アカウントの確認が必要です。
+    mailer:
+      confirmation_instructions:
+        subject: アカウント確認手順
+      reset_password_instructions:
+        subject: パスワード再設定手順
+      unlock_instructions:
+        subject: アカウントロック解除手順
+      email_changed:
+        subject: メールアドレス変更通知
+      password_change:
+        subject: パスワード変更通知
+    omniauth_callbacks:
+      failure: "%{kind}アカウントによる認証に失敗しました。理由（%{reason}）"
+      success: "%{kind}アカウントによる認証に成功しました。"
+    passwords:
+      no_token: このページにはアクセスできません。
+      send_instructions: パスワード再設定用のメールを送信しました。
+      send_paranoid_instructions: メールアドレスが登録済みの場合、パスワード再設定用のメールが送信されます。
+      updated: パスワードが正しく変更されました。
+      updated_not_active: パスワードが正しく変更されました。アカウントは有効化されていません。
+    registrations:
+      destroyed: アカウントは削除されました。またのご利用をお待ちしております。
+      signed_up: アカウント登録が完了しました。
+      signed_up_but_inactive: アカウント登録を受け付けました。アカウントを有効化するためのメールを確認してください。
+      signed_up_but_locked: アカウントはロックされています。
+      signed_up_but_unconfirmed: アカウント登録を受け付けました。アカウントを有効化するためのメールを確認してください。
+      update_needs_confirmation: プロフィールを更新しました。新しいメールアドレスの確認が必要です。
+      updated: プロフィールを変更しました。
+      updated_but_not_signed_in: プロフィールを更新しましたが、再ログインが必要なため自動ではログインしませんでした。
+    sessions:
+      signed_in: ログインしました。
+      signed_out: ログアウトしました。
+      already_signed_out: すでにログアウト済みです。
+    unlocks:
+      send_instructions: アカウント解除用のメールを送信しました。
+      send_paranoid_instructions: 登録済みの場合、アカウント解除用のメールが送信されます。
+      unlocked: アカウントが解除されました。
