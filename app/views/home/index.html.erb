@@ -1,0 +1,66 @@
+<div class="text-center mb-5">
+  <h1 class="display-4 mb-4">しんちょくんへようこそ</h1>
+  <p class="lead text-muted mb-4">案件管理を効率的に行うためのアプリケーションです</p>
+</div>
+
+<div class="row g-4 mb-5">
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">📋 案件管理</h5>
+        <p class="card-text">プロジェクトの作成・編集・削除が簡単にできます。</p>
+        <% if user_signed_in? %>
+          <%= link_to "案件一覧を見る", projects_path, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "ログインして始める", new_user_session_path, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">👥 チーム連携</h5>
+        <p class="card-text">メンバーを割り当てて、効率的にプロジェクトを進めましょう。</p>
+        <% if user_signed_in? %>
+          <%= link_to "案件を作成", new_project_path, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "アカウント登録", new_user_registration_path, class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">💬 コメント機能</h5>
+        <p class="card-text">プロジェクトに関するコメントを残して、コミュニケーションを取れます。</p>
+        <% if user_signed_in? %>
+          <p class="text-muted small">ログイン済み</p>
+        <% else %>
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <div class="alert alert-info">
+    <h5 class="alert-heading">ログイン中</h5>
+    <p class="mb-0">ようこそ、<strong><%= current_user.name %></strong>さん！</p>
+  </div>
+<% else %>
+  <div class="text-center">
+    <h3 class="mb-3">始めてみませんか？</h3>
+    <p class="mb-4">無料でアカウントを作成して、案件管理を始めましょう。</p>
+    <div class="d-flex gap-2 justify-content-center">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-primary btn-lg" %>
+    </div>
+  </div>
+<% end %>
+
+

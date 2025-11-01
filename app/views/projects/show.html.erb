@@ -1,10 +1,42 @@
-<p style="color: green"><%= notice %></p>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="h3 m-0">案件詳細</h1>
+  <div class="d-flex gap-2">
+    <%= link_to "編集", edit_project_path(@project), class: "btn btn-outline-primary" %>
+    <%= link_to "一覧に戻る", projects_path, class: "btn btn-outline-secondary" %>
+    <%= button_to "削除", @project, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger" %>
+  </div>
+</div>
 
-<%= render @project %>
-
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
-
-  <%= button_to "Destroy this project", @project, method: :delete %>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @project.title %></h5>
+    <p class="card-text"><%= simple_format(@project.description) %></p>
+    
+    <dl class="row mb-0">
+      <% if @project.start_date.present? %>
+        <dt class="col-sm-3">開始日</dt>
+        <dd class="col-sm-9"><%= @project.start_date %></dd>
+      <% end %>
+      
+      <% if @project.end_date.present? %>
+        <dt class="col-sm-3">終了日</dt>
+        <dd class="col-sm-9"><%= @project.end_date %></dd>
+      <% end %>
+      
+      <% if @project.deadline.present? %>
+        <dt class="col-sm-3">締切日</dt>
+        <dd class="col-sm-9"><%= @project.deadline %></dd>
+      <% end %>
+      
+      <% if @project.status.present? %>
+        <dt class="col-sm-3">ステータス</dt>
+        <dd class="col-sm-9">
+          <span class="badge bg-primary"><%= @project.status %></span>
+        </dd>
+      <% end %>
+      
+      <dt class="col-sm-3">作成日</dt>
+      <dd class="col-sm-9"><%= @project.created_at.strftime("%Y年%m月%d日") %></dd>
+    </dl>
+  </div>
 </div>

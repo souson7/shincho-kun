@@ -1,7 +1,7 @@
 <%= form_with(model: project) do |form| %>
   <% if project.errors.any? %>
     <div class="alert alert-danger">
-      <h2 class="h6 mb-2"><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <h2 class="h6 mb-2">エラーが<%= project.errors.count %>件あります:</h2>
       <ul class="mb-0">
         <% project.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,28 +11,47 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :title, class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
+    <%= form.label :title, "案件名", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "案件名を入力してください" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :description, class: "form-label" %>
-    <%= form.text_area :description, rows: 5, class: "form-control" %>
+    <%= form.label :description, "説明", class: "form-label" %>
+    <%= form.text_area :description, rows: 5, class: "form-control", placeholder: "案件の詳細を入力してください" %>
   </div>
 
-  <div class="row g-3">
+  <div class="row g-3 mb-3">
     <div class="col-sm-6">
-      <%= form.label :start_date, class: "form-label" %>
+      <%= form.label :start_date, "開始日", class: "form-label" %>
       <%= form.date_field :start_date, class: "form-control" %>
     </div>
     <div class="col-sm-6">
-      <%= form.label :end_date, class: "form-label" %>
+      <%= form.label :end_date, "終了日", class: "form-label" %>
       <%= form.date_field :end_date, class: "form-control" %>
     </div>
   </div>
 
+  <div class="row g-3 mb-3">
+    <div class="col-sm-6">
+      <%= form.label :deadline, "締切日", class: "form-label" %>
+      <%= form.date_field :deadline, class: "form-control" %>
+    </div>
+    <div class="col-sm-6">
+      <%= form.label :status, "ステータス", class: "form-label" %>
+      <%= form.select :status, 
+          options_for_select([
+            ["未着手", "未着手"],
+            ["進行中", "進行中"],
+            ["完了", "完了"],
+            ["保留", "保留"]
+          ], project.status),
+          { prompt: "ステータスを選択してください" },
+          { class: "form-select" } %>
+    </div>
+  </div>
+
   <div class="mt-4 d-flex gap-2">
-    <%= form.submit class: "btn btn-primary" %>
-    <%= link_to "Back", projects_path, class: "btn btn-outline-secondary" %>
+    <%= form.submit project.new_record? ? "作成する" : "更新する", class: "btn btn-primary" %>
+    <%= link_to "キャンセル", projects_path, class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
