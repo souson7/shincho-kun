@@ -22,6 +22,9 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <% if user_signed_in? %>
               <li class="nav-item">
+                <%= link_to "マイページ", user_path(current_user), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
                 <%= link_to "案件一覧", projects_path, class: "nav-link" %>
               </li>
               <li class="nav-item">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_10_30_190000) do
+ActiveRecord::Schema[7.1].define(version: 2025_11_01_154903) do
   create_table "assignments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "project_id", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_10_30_190000) do
     t.string "profile_image_id"
     t.string "user_name"
     t.text "profile"
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_name"], name: "index_users_on_user_name", unique: true

@@ -1,0 +1,26 @@
+<div class="container py-4">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title"><%= @user.name %>のプロフィール</h3>
+      <p><strong>Email:</strong> <%= @user.email %></p>
+      <p><strong>権限:</strong> 
+        <span class="badge <%= @user.admin? ? 'bg-danger' : 'bg-primary' %>">
+          <%= @user.role.capitalize %>
+        </span>
+      </p>
+
+      <h4 class="mt-4">作成した案件一覧</h4>
+      <ul class="list-group">
+        <% @projects.each do |project| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= link_to project.title, project_path(project) %>
+            <span class="badge <%= project.status == '進行中' ? 'bg-success' : 'bg-secondary' %>">
+              <%= project.status %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
